@@ -15,8 +15,18 @@ const FAQ = () => {
     },
     {
       question: "What is this for parents?",
-      answer: "Parents want to support their teens, but often don’t get to see what their children are really feeling. My World My Say gives parents a safe, anonymous way to learn about teens’ world. They can also see how other parents think about parenting—what worries them, what comforts them, and how they deal with similar parenting situations—so no parent feels alone in the challenges of raising a teen."
+      answer: (
+        <>
+          <p style={{ marginBottom: "1rem" }}>
+            Research suggests that family climate — how freely a teen feels heard, the level of conflict or support at home, and the quality of connection — is one of several factors shaping emotional health.
+          </p>
+          <p>
+            My World My Say helps parents strengthen that connection by opening new channels of communication and insight. It provides a safe, anonymous way to glimpse what teens are feeling and thinking, and to see how other parents approach parenting — what worries them, what comforts them, and how they handle similar situations — so no parent feels alone in the challenges of raising a teen.
+          </p>
+        </>
+      )
     },
+
     {
       question: "Is this really anonymous?",
       answer: "Yes, completely. We don't collect your name, email, or any personal information. Your responses are linked only to a random ID that helps us group responses without knowing who you are."

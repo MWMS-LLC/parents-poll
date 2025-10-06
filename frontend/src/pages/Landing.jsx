@@ -49,7 +49,7 @@ const Landing = () => {
   }
 
   // Utility function to clear app storage and start fresh
-  const clearLocalStorageAndRefresh = () => {
+  const _clearLocalStorageAndRefresh = () => {
     try {
       // Remove only keys used by your app
       localStorage.removeItem('myAppData');
@@ -75,13 +75,13 @@ const Landing = () => {
 
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [_error, _setError] = useState('')
   const [showAgeDropdown, setShowAgeDropdown] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedAge, setSelectedAge] = useState('')
-  const [userCreationError, setUserCreationError] = useState('')
+  const [_userCreationError, setUserCreationError] = useState('')
   const [isCreatingUser, setIsCreatingUser] = useState(false)
-  const [retryCount, setRetryCount] = useState(0)
+  const [_retryCount, _setRetryCount] = useState(0)
   
   // Get current day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
   const getCurrentDayOfWeek = () => {
@@ -125,7 +125,7 @@ const Landing = () => {
 
   const [showSharing, setShowSharing] = useState(false)
   const [copySuccess, setCopySuccess] = useState(false)
-  const [socialHandles, setSocialHandles] = useState({})
+  const [socialHandles, _setSocialHandles] = useState({})
 
   useEffect(() => {
     // Fetch categories from API
@@ -194,7 +194,7 @@ const Landing = () => {
       console.log('Generated user UUID:', userUuid)
       
       // Create user
-      const userResponse = await createUser(userUuid, birthYear)
+      const _userResponse = await createUser(userUuid, birthYear)
 
 
       // Store in localStorage
@@ -334,10 +334,10 @@ const Landing = () => {
     )
   }
 
-  if (error) {
+  if (_error) {
     return (
       <div style={styles.errorContainer}>
-        <div style={styles.generalErrorText}>Oops! {error}</div>
+        <div style={styles.generalErrorText}>Oops! {_error}</div>
       </div>
     )
   }
@@ -406,8 +406,7 @@ const Landing = () => {
         
         <div style={styles.taglineContainer}>
           <div style={styles.tagline}>For Parents</div>
-          <div style={styles.mainTagline}>Your voice matters too</div>
-          <div style={styles.subtitle}>No judgment. Just reflection.</div>
+          <div style={styles.subtitle}>Your voice matters too.</div>
           <div style={styles.description}>Stats = trends, not truths. Mood rings, not microscopes.</div>
           <div style={styles.callToAction}>
             See how other parents respond—anonymously. <br />
