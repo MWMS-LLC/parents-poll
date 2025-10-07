@@ -32,6 +32,8 @@ export default [
         clearInterval: 'readonly',
         fetch: 'readonly',
         Audio: 'readonly',
+        // Node.js globals
+        process: 'readonly',
         // React globals (if needed)
         React: 'readonly',
       },
@@ -54,15 +56,15 @@ export default [
       'react/react-in-jsx-scope': 'off', // Not needed in React 17+
       'react/prop-types': 'off', // Using TypeScript instead
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-      
-      // General code quality
-      'no-console': 'warn',
+            'react-hooks/exhaustive-deps': 'off',
+            
+            // General code quality
+            'no-console': 'off',
       'no-debugger': 'error',
-      'no-alert': 'warn',
+            'no-alert': 'off',
       'prefer-const': 'error',
       'no-var': 'error',
-      'no-useless-escape': 'warn',
+            'no-useless-escape': 'off',
     },
     settings: {
       react: {

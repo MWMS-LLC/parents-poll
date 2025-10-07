@@ -407,21 +407,12 @@ const Landing = () => {
         <div style={styles.taglineContainer}>
           <div style={styles.tagline}>For Parents</div>
           <div style={styles.subtitle}>Your voice matters too.</div>
-          <div style={styles.description}>Stats = trends, not truths. Mood rings, not microscopes.</div>
-          <div style={styles.callToAction}>
-            See how other parents respond—anonymously. <br />
-            <span style={styles.highlight}>Notice the trends from teens.</span>
-          </div>
         </div>
       </div>
 
       {/* Social Media Sharing Section */}
       <div style={styles.sharingSection}>
         <div style={styles.sharingHeader}>
-          <div style={styles.sharingTitle}>
-            <span style={styles.speechBubble}>💬</span>
-            Drop it in your chat
-          </div>
           <button 
             style={{
               ...styles.hideLinkButton,
@@ -429,7 +420,7 @@ const Landing = () => {
             }} 
             onClick={toggleSharing}
           >
-            {showSharing ? 'Hide Link' : 'Show Link'}
+            {showSharing ? 'Hide Link' : 'Share with your friends'}
           </button>
         </div>
         {showSharing && (
@@ -931,7 +922,7 @@ const styles = {
   
   sharingHeader: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '10px',
     paddingBottom: '8px',

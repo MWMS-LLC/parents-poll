@@ -34,7 +34,7 @@ export const AudioProvider = ({ children }) => {
     const defaultThemeSong = {
       id: "THM_1",
       title: "Theme Song (Male Inspiring Rap)",
-      fileUrl: "https://myworld-soundtrack.s3.us-east-2.amazonaws.com/myworld_soundtrack/Theme+(Male+Inspiring+Rap).mp3"
+      fileUrl: "/My%20World%20My%20Say%20Theme.mp3"
     }
     setThemeSong(defaultThemeSong)
     
