@@ -509,14 +509,15 @@ def get_results(question_code: str):
             "votes": votes
         })
 
-    # --- Total responses as integer (distinct users across both tables) ---
+    # --- Total responses as integer (count all answers, not unique users) ---
+    # Count all responses: one per row in responses table, one per row in checkbox_responses table
     total_result = execute_query(
         """
-        SELECT COUNT(DISTINCT user_uuid) AS n FROM (
+        SELECT COUNT(*) AS n FROM (
             SELECT user_uuid
             FROM responses
             WHERE question_code = %s
-            UNION
+            UNION ALL
             SELECT user_uuid
             FROM checkbox_responses
             WHERE question_code = %s
