@@ -45,11 +45,11 @@ const ResultsBarChart = ({ results, _questionText, options = [] }) => {
     return sum + count
   }, 0)
   
-  // Keep track of unique respondents too (if backend provides it)
-  const totalRespondents = results.total_responses || 0
+  // Keep track of backend total responses (fallback when no votes yet)
+  const totalResponses = results.total_responses || 0
   
-  // Denominator for percentages (votes when available, fallback to respondents)
-  const percentageBase = totalVotes > 0 ? totalVotes : totalRespondents
+  // Denominator for percentages (use total votes, fallback to total responses)
+  const percentageBase = totalVotes > 0 ? totalVotes : totalResponses
   
   // Transform data for progress bars with safety checks
   const chartData = results.results.map(item => {
@@ -83,14 +83,14 @@ const ResultsBarChart = ({ results, _questionText, options = [] }) => {
         </div>
         
         <div style={styles.totalResponses}>
-          Total responses: 0
+          Total votes: 0
         </div>
       </div>
     )
   }
 
-  const totalLabelValue = Math.round(totalVotes > 0 ? totalVotes : totalRespondents)
-  const totalLabelPrefix = totalVotes > 0 ? 'Total votes' : 'Total responses'
+  const totalLabelValue = Math.round(totalVotes > 0 ? totalVotes : totalResponses)
+  const totalLabelPrefix = 'Total votes'
 
   return (
     <div style={styles.container}>
@@ -124,11 +124,6 @@ const ResultsBarChart = ({ results, _questionText, options = [] }) => {
       {/* Total Responses */}
       <div style={styles.totalResponses}>
         {totalLabelPrefix}: {totalLabelValue}
-        {totalVotes > 0 && totalRespondents > 0 && (
-          <div style={styles.subLabel}>
-            ({totalRespondents} unique respondents)
-          </div>
-        )}
       </div>
     </div>
   )
@@ -233,13 +228,6 @@ const styles = {
     color: '#2D7D7A',
     fontSize: '16px',
     border: '1px solid rgba(45, 125, 122, 0.2)'
-  },
-  
-  subLabel: {
-    marginTop: '6px',
-    fontWeight: '500',
-    fontSize: '14px',
-    color: 'rgba(45, 125, 122, 0.8)'
   }
 }
 

@@ -465,12 +465,8 @@ def get_results(question_code: str):
     single_counts = execute_query(
         """
         SELECT option_select, COUNT(*)::float as votes
-        FROM (
-            SELECT DISTINCT ON (user_uuid) option_select
-            FROM responses
-            WHERE question_code = %s
-            ORDER BY user_uuid, created_at DESC
-        ) latest_votes
+        FROM responses
+        WHERE question_code = %s
         GROUP BY option_select
         """,
         (question_code,)
@@ -480,12 +476,8 @@ def get_results(question_code: str):
     checkbox_counts = execute_query(
         """
         SELECT option_select, COALESCE(SUM(weight),0)::float as votes
-        FROM (
-            SELECT DISTINCT ON (user_uuid, option_select) weight, option_select
-            FROM checkbox_responses
-            WHERE question_code = %s
-            ORDER BY user_uuid, option_select, created_at DESC
-        ) latest_checkbox_votes
+        FROM checkbox_responses
+        WHERE question_code = %s
         GROUP BY option_select
         """,
         (question_code,)
